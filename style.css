@@ -1,0 +1,155 @@
+/* Reset de margens e padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e3a8a, #f9f9f9);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* Container centralizado com layout moderno */
+.container {
+    background: rgba(255, 255, 255, 0.85); /* Fundo translúcido */
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 15px; /* Borda arredondada */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Título com estilo moderno */
+h1 {
+    font-size: 2.5rem;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+    font-weight: bold;
+    animation: slideInDown 1s ease-out;
+}
+
+/* Estilo dos campos de formulário (select, input e button) */
+select, input[type="number"], button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #555;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Estilo ao focar nos campos de entrada */
+select:focus, input[type="number"]:focus {
+    border-color: #1e3a8a;
+    outline: none;
+    box-shadow: 0 0 8px rgba(30, 58, 138, 0.8);
+}
+
+/* Botão com animações modernas */
+button {
+    background: linear-gradient(90deg, #1e3a8a, #0e2854);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    padding: 15px;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #0e2854, #1e3a8a);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(30, 58, 138, 0.4);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Resultados da conversão com estilo elegante */
+#resultados {
+    margin-top: 20px;
+    background: #f4f4f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #555;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Animações de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsividade - Para telas menores que 768px */
+@media screen and (max-width: 768px) {
+    .container {
+        max-width: 90%;
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    select, input[type="number"], button {
+        font-size: 1rem;
+    }
+}
+
+/* Responsividade - Para telas menores que 480px (smartphones) */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    select, input[type="number"], button {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}

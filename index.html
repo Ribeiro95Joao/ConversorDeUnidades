@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversão de Unidades</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Conversão de Unidades</h1>
+        
+        <label for="grandeza">Selecione uma grandeza:</label>
+        <select id="grandeza">
+            <option value="">Escolha uma grandeza</option>
+            <option value="comprimento">Comprimento</option>
+            <option value="temperatura">Temperatura</option>
+            <option value="energia">Energia</option>
+            <option value="volume">Volume</option>
+            <option value="velocidade">Velocidade</option>
+            <option value="aceleracao">Aceleração</option>
+            <option value="densidade">Densidade</option>
+            <option value="tempo">Tempo</option>
+            <option value="massa">Massa</option>
+            <option value="area">Área</option>
+            <option value="forca">Força</option>
+            <option value="vazaoVolumetrica">Vazão Volumétrica</option>
+            <option value="vazaoMassica">Vazão Mássica</option>
+            <option value="viscosidade">Viscosidade</option>
+            <option value="pressao">Pressão</option>
+            <option value="calorEspecifico">Calor Específico</option>
+        </select>
+        
+        <div id="conversaoInputs" style="display:none;">
+            <label for="valor">Valor:</label>
+            <input type="number" id="valor" placeholder="Digite o valor">
+            
+            <label for="unidade">Unidade:</label>
+            <select id="unidade">
+                <!-- As unidades serão carregadas via JS -->
+            </select>
+
+            <button onclick="realizarConversao()">Converter</button>
+        </div>
+        
+        <div id="resultado"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

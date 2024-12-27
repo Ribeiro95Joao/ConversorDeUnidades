@@ -13,23 +13,24 @@ const unidades = {
     vazaoVolumetrica: ["Metros Cúbicos por Segundo (m³/s)", "Metros Cúbicos por Hora (m³/h)", "Litros por Minuto (l/min)", "Galões por Minuto (gpm)"],
     vazaoMassica: ["Quilogramas por Hora (kg/h)", "Quilogramas por Segundo (kg/s)", "Libras por Segundo (lb/s)"],
     viscosidade: ["Centipoise (cP)", "Pascal Segundo (PaS)"],
-    pressao: ["Pascals (Pa)", "Bar (bar)", "Libras por Polegada (psi)", "QuiloPascal (kPa)", "Metros de Coluna d'Água (mca)"],
-    calorEspecifico: ["Joules por Quilograma e por Kelvin (J/kg.K)", "Calorias por Grama e Grau Celsius (Cal/g.ºC)"]
+    pressao: ["Pascals (Pa)", "Bar (bar)", "Libras por Polegada Quadrada (psi)", "QuiloPascal (kPa)", "Metros de Coluna d'Água (mca)"],
+    calorEspecifico: ["Joules por Quilograma e por Kelvin (J/kg.K)", "Calorias por Grama e Grau Celsius (Cal/g.ºC)"],
+    potencia: ["Horse Power (hp)", "Cavalo Vapor (cv)", "Watt (W)", "Quilowatt (kW)"]
 };
 
 document.getElementById('grandeza').addEventListener('change', function () {
     const grandeza = this.value;
     const unidadeSelect = document.getElementById('unidade');
     const conversaoInputs = document.getElementById('conversaoInputs');
-    
+
     unidadeSelect.innerHTML = '';
-    
+
     document.getElementById('valor').value = '';
     document.getElementById('resultado').innerHTML = '';
 
     if (grandeza) {
         const unidadesOptions = unidades[grandeza];
-        
+
         unidadesOptions.forEach(unit => {
             const option = document.createElement('option');
             option.value = unit;
@@ -62,7 +63,7 @@ function realizarConversao() {
     let resultadoHTML = `<h2>Resultados para ${grandeza}:</h2>`;
 
     const unidadesOptions = unidades[grandeza];
-    
+
     unidadesOptions.forEach(unit => {
         if (unit !== unidade) {
             let resultado;
@@ -114,6 +115,9 @@ function realizarConversao() {
                     break;
                 case 'calorEspecifico':
                     resultado = converterCalorEspecifico(valor, unidade, unit);
+                    break;
+                case 'potencia':
+                    resultado = converterPotencia(valor, unidade, unit);
                     break;
                 default:
                     resultado = 'Conversão não disponível';
@@ -352,7 +356,7 @@ function converterPressao(valor, unidadeOrigem, unidadeDestino) {
     const pressao = {
         "Pascals (Pa)": 1,
         "Bar (bar)": 1e-5,
-        "Libras por Polegada (psi)": 0.000145038,
+        "Libras por Polegada Quadrada (psi)": 0.000145038,
         "QuiloPascal (kPa)": 0.001,
         "Metros de Coluna d'Água (mca)": 1.019716212977928e-4
     };
@@ -367,4 +371,15 @@ function converterCalorEspecifico(valor, unidadeOrigem, unidadeDestino) {
     };
     const valorEmJoules = valor / calorEspecifico[unidadeOrigem];
     return (valorEmJoules * calorEspecifico[unidadeDestino]).toFixed(4);
+}
+
+function converterPotencia(valor, unidadeOrigem, unidadeDestino) {
+    const potencia = {
+        "Horse Power (hp)": 1,
+        "Cavalo Vapor (cv)": 0.98632,
+        "Watt (W)": 735.49875,
+        "Quilowatt (kW)": 0.73549875
+    };
+    const valorEmHp = valor / potencia[unidadeOrigem];
+    return (valorEmHp * potencia[unidadeDestino]).toFixed(4);
 }
